@@ -4,7 +4,7 @@ import { Navbar, Nav } from 'react-bootstrap';
 export default class Header extends Component {
   render() {
     return (
-      <Navbar collapseOnSelect fixed="top" bg="dark" variant="dark">
+      <Navbar collapseOnSelect bg="dark" variant="dark">
         <Navbar.Toggle aria-controls="responsive-navbar-nav" />
         <Navbar.Collapse id="responsive-navbar-nav">
           <Navbar.Brand href="home">MovieWeb</Navbar.Brand>
