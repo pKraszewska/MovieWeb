@@ -1,0 +1,21 @@
+.form-box {
+  margin: 0 auto;
+  padding: 30px;
+  max-width: 400px;
+}
+
+.border {
+  border: 1px solid #cdd6db;
+  border-radius: 5px;
+}
+
+.form-sign {
+  font-size: 24px;
+  font-weight: 300;
+  letter-spacing: -0.3px;
+  margin: 0px 65px 20px;
+}
+
+.btn-login {
+  margin: 40px 0 0;
+}
