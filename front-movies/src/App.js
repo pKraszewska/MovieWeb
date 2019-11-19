@@ -1,7 +1,8 @@
 import React, { Component } from 'react';
-import { BrowserRouter as Router } from 'react-router-dom';
+import { BrowserRouter as Router, Route } from 'react-router-dom';
 import Header from './components/header/Header';
 import Searchbar from './components/searchbar/Searchbar';
+import LoginForm from './components/forms/LoginForm';
 
 export default class App extends Component {
   render() {
@@ -9,8 +10,9 @@ export default class App extends Component {
       <Router>
         <Header />
         <div className="content-box">
-          <Searchbar />
+          <Route path="/home" component={Searchbar} />
         </div>
+        <Route path="/login" component={LoginForm} />
       </Router>
     );
   }
