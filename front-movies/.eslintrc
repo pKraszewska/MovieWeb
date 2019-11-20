@@ -1,3 +1,7 @@
 {
-  "extends": ["prettier-react"]
+  "extends": ["prettier-react"],
+  "rules": {
+    "react/destructuring-assignment": "off",
+    "class-methods-use-this": "off"
+  }
 }
