@@ -1,23 +1,74 @@
+/* eslint-disable react/no-unused-state */
 import React, { Component } from 'react';
-import { Form, Button } from 'react-bootstrap';
+import { Form, Button, Alert } from 'react-bootstrap';
 import './forms.css';
 
 export default class LoginForm extends Component {
+  constructor(props) {
+    super(props);
+    this.updateState = this.updateState.bind(this);
+    this.authorizeUser = this.authorizeUser.bind(this);
+
+    this.state = {
+      username: '',
+      password: '',
+      checkedCredentaials: true,
+    };
+  }
+
+  updateState(event) {
+    if (event.target.name === 'username') {
+      this.setState({ username: event.target.value });
+    } else if (event.target.name === 'password') {
+      this.setState({ password: event.target.value });
+    }
+  }
+
+  authorizeUser() {
+    if (this.state.username === 'basia' && this.state.password === '123') {
+      localStorage.setItem('movie-auth', 'basia');
+      window.location.replace('/home');
+    } else {
+      this.setState({ checkedCredentaials: false });
+    }
+  }
+
   render() {
     return (
       <div className="form-box">
         <h4 className="form-sign">Sign in to MovieWeb</h4>
+        {this.state.checkedCredentaials ? (
+          true
+        ) : (
+          <Alert variant="danger">Wrong username or password.</Alert>
+        )}
+
         <div className="form-box border">
           <Form>
-            <Form.Group controlId="formUsername">
+            <Form.Group>
               <Form.Label>Username</Form.Label>
-              <Form.Control type="text" placeholder="Enter username" />
+              <Form.Control
+                name="username"
+                type="text"
+                placeholder="Enter username"
+                onChange={this.updateState}
+              />
             </Form.Group>
-            <Form.Group controlId="formPassword">
+            <Form.Group>
               <Form.Label>Password</Form.Label>
-              <Form.Control type="password" placeholder="Enter password" />
+              <Form.Control
+                name="password"
+                type="password"
+                placeholder="Enter password"
+                onChange={this.updateState}
+              />
             </Form.Group>
-            <Button variant="success" type="submit" block className="btn-login">
+            <Button
+              variant="success"
+              block
+              className="btn-login"
+              onClick={this.authorizeUser}
+            >
               Sing in
             </Button>
           </Form>
