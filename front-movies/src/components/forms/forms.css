@@ -38,3 +38,11 @@
 .btn-login {
   margin: 40px 0 0;
 }
+
+.form-message {
+  font-size: 13px;
+  margin-top: 2px;
+}
+.invalid {
+  color: rgb(202, 0, 0);
+}
