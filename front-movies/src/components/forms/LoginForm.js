@@ -28,6 +28,7 @@ export default class LoginForm extends Component {
     if (this.state.username === 'basia' && this.state.password === '123') {
       localStorage.setItem('movie-auth', 'basia');
       window.location.replace('/home');
+      window.location.reload();
     } else {
       this.setState({ checkedCredentaials: false });
     }
@@ -35,8 +36,8 @@ export default class LoginForm extends Component {
 
   render() {
     return (
-      <div className="form-box">
-        <h4 className="form-sign">Sign in to MovieWeb</h4>
+      <div className="form-box login">
+        <h4 className="form-login-sign text-center">Sign in to MovieWeb</h4>
         {this.state.checkedCredentaials ? (
           true
         ) : (
