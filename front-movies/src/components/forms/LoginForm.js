@@ -74,6 +74,12 @@ export default class LoginForm extends Component {
             </Button>
           </Form>
         </div>
+        <div className="form-box border text-center new">
+          <p className="new-message">
+            New to MovieWeb?{' '}
+            <a href="http://localhost:1234/register">Create account</a>
+          </p>
+        </div>
       </div>
     );
   }

@@ -1,6 +1,15 @@
 .form-box {
   margin: 0 auto;
   padding: 30px;
+  margin-bottom: 30px;
+}
+
+.new {
+  padding: 20px;
+}
+
+.new-message {
+  margin: 0;
 }
 
 .login {
