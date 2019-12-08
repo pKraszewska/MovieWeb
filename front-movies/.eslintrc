@@ -2,6 +2,7 @@
   "extends": ["prettier-react"],
   "rules": {
     "react/destructuring-assignment": "off",
-    "class-methods-use-this": "off"
+    "class-methods-use-this": "off",
+    "react/prop-types": 0
   }
 }
