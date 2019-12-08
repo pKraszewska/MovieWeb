@@ -44,35 +44,39 @@ export default class Searchbar extends Component {
 
   render() {
     return (
-      <Form>
-        <Row>
-          <Col>
-            <Form.Label>What are you looking for?</Form.Label>
-          </Col>
-        </Row>
-        <Row>
-          <Col xs={10}>
-            <FormControl
-              type="text"
-              placeholder="Find Movies, TV Shows..."
-              className="mr-sm-5"
-              value={this.state.query}
-              onChange={this.handleInputChange}
-            />
-          </Col>
-          <Col xs={2}>
-            <Button onClick={this.search} variant="outline-success">
-              Search
-            </Button>
-          </Col>
-        </Row>
+      <React.Fragment>
+        <div className="search-box">
+          <Form>
+            <Row>
+              <Col>
+                <Form.Label>What are you looking for?</Form.Label>
+              </Col>
+            </Row>
+            <Row>
+              <Col xs={10}>
+                <FormControl
+                  type="text"
+                  placeholder="Find Movies, TV Shows..."
+                  className="mr-sm-5"
+                  value={this.state.query}
+                  onChange={this.handleInputChange}
+                />
+              </Col>
+              <Col xs={2}>
+                <Button onClick={this.search} variant="outline-success">
+                  Search
+                </Button>
+              </Col>
+            </Row>
+          </Form>
+        </div>
         {this.state.result.length > 0 ? (
           <SearchContainer
             results={this.state.result}
             count={this.state.count}
           />
         ) : null}
-      </Form>
+      </React.Fragment>
     );
   }
 }
