@@ -11,7 +11,7 @@ export default class App extends Component {
       <Router>
         <Header />
         <div className="content-box">
-          <Route path="/home" component={Searchbar} />
+          <Route path="/(home|movies|genres)/" component={Searchbar} />
         </div>
         <Route path="/login" component={LoginForm} />
         <Route path="/register" component={RegisterForm} />
