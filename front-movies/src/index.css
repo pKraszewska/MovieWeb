@@ -350,11 +350,3 @@ template {
 [hidden] {
   display: none;
 }
-
-.content-box {
-  display: flex;
-  justify-content: center;
-  margin: 2% 0%;
-}
-
-
