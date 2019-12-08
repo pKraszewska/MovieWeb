@@ -55,12 +55,22 @@ export default class Searchbar extends Component {
               type="text"
               placeholder="Find Movies, TV Shows..."
               className="mr-sm-5"
+              value={this.state.query}
+              onChange={this.handleInputChange}
             />
           </Col>
           <Col xs={2}>
-            <Button variant="outline-success">Search</Button>
+            <Button onClick={this.search} variant="outline-success">
+              Search
+            </Button>
           </Col>
         </Row>
+        {this.state.result.length > 0 ? (
+          <SearchContainer
+            results={this.state.result}
+            count={this.state.count}
+          />
+        ) : null}
       </Form>
     );
   }
