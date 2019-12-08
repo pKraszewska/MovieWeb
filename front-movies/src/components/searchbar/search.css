@@ -1,0 +1,27 @@
+.search-box {
+  display: flex;
+  justify-content: center;
+  max-width: 500px;
+  margin: 2% auto;
+}
+
+.cont {
+  margin: 0 10% 0 10%;
+}
+.movies {
+  display: flex;
+  justify-content: center;
+  flex-wrap: wrap;
+}
+
+.count {
+  margin-left: 10%;
+}
+
+.movie-inside {
+  margin: 10px 20px 10px 0;
+}
+
+.title {
+  max-width: 170px;
+}
