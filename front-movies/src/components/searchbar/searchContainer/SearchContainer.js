@@ -1,17 +1,18 @@
 import React, { Component } from 'react';
-import { Container } from 'react-bootstrap';
+import '../search.css';
 
 export default class SearchContainer extends Component {
   render() {
     const { results, count } = this.props;
     return (
-      <Container>
-        <h4>
-          Found {count} {count > 1 ? 'results' : 'result'}:
-        </h4>
-
+      <React.Fragment>
+        <div className="cont count">
+          <h5>
+            Found {count} {count > 1 ? 'movies' : 'movie'}:
+          </h5>
+        </div>
         <ResultContainer results={results} />
-      </Container>
+      </React.Fragment>
     );
   }
 }
@@ -19,15 +20,22 @@ export default class SearchContainer extends Component {
 const ResultContainer = props => {
   const rows = props.results.map((row, index) => {
     return (
-      <tr key={index}>
-        <td>{row.title}</td>
-        <td>{row.year}</td>
-        <td>{row.description_full}</td>
-        <td>{row.rating}</td>
-        <td>{row.runtime}</td>
-      </tr>
+      <div className="movie-inside">
+        <figure key={index}>
+          <img
+            src={row.medium_cover_image}
+            alt={row.title}
+            width="170"
+            height="255"
+          />
+        </figure>
+        <div className="title">
+          {row.title}
+          <div>{row.year}</div>
+        </div>
+      </div>
     );
   });
 
-  return <tbody>{rows}</tbody>;
+  return <div className="cont movies">{rows}</div>;
 };
