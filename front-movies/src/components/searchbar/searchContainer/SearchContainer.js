@@ -20,8 +20,8 @@ export default class SearchContainer extends Component {
 const ResultContainer = props => {
   const rows = props.results.map((row, index) => {
     return (
-      <div className="movie-inside">
-        <figure key={index}>
+      <div key={index} className="movie-inside">
+        <figure>
           <img
             src={row.medium_cover_image}
             alt={row.title}

@@ -36,7 +36,7 @@ export default class LoginForm extends Component {
   render() {
     return (
       <div className="form-box register">
-        <p className="register-join text-center">Join WebMovie</p>
+        <p className="register-join text-center">Join MovieWeb</p>
         <h4 className="form-sign-register text-center">Create your account</h4>
         <div className="form-box">
           <Formik
