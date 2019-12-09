@@ -1,4 +1,5 @@
 import React, { Component } from 'react';
+import { BrowserRouter as Router, Redirect } from 'react-router-dom';
 import { Form, FormControl, Button, Col, Row } from 'react-bootstrap';
 import SearchContainer from './searchContainer/SearchContainer';
 import './search.css';
@@ -13,15 +14,18 @@ export default class Searchbar extends Component {
       query: '',
       result: [],
       count: 0,
+      searchedPhrase: '',
     };
   }
 
   handleInputChange(event) {
-    this.setState({ query: event.target.value });
+    this.setState({
+      query: event.target.value,
+      searchedPhrase: event.target.value,
+    });
   }
 
   search() {
-    console.log('szukam');
     fetch(
       `https://yts.lt/api/v2/list_movies.json?query_term=${this.state.query}`
     )
@@ -38,44 +42,53 @@ export default class Searchbar extends Component {
       .catch(error => {
         console.log(error);
       });
-
     this.setState({ query: '' });
   }
 
   render() {
+    const { searchedPhrase } = this.state;
     return (
       <React.Fragment>
-        <div className="search-box">
-          <Form>
-            <Row>
-              <Col>
-                <Form.Label>What are you looking for?</Form.Label>
-              </Col>
-            </Row>
-            <Row>
-              <Col xs={10}>
-                <FormControl
-                  type="text"
-                  placeholder="Find Movies, TV Shows..."
-                  className="mr-sm-5"
-                  value={this.state.query}
-                  onChange={this.handleInputChange}
-                />
-              </Col>
-              <Col xs={2}>
-                <Button onClick={this.search} variant="outline-success">
-                  Search
-                </Button>
-              </Col>
-            </Row>
-          </Form>
-        </div>
-        {this.state.result.length > 0 ? (
-          <SearchContainer
-            results={this.state.result}
-            count={this.state.count}
-          />
-        ) : null}
+        <Router>
+          <div className="search-box">
+            <Form>
+              <Row>
+                <Col>
+                  <Form.Label>What are you looking for?</Form.Label>
+                </Col>
+              </Row>
+              <Row>
+                <Col xs={10}>
+                  <FormControl
+                    type="text"
+                    placeholder="Find Movies..."
+                    className="mr-sm-5"
+                    value={this.state.query}
+                    onChange={this.handleInputChange}
+                  />
+                </Col>
+                <Col xs={2}>
+                  <Button onClick={this.search} variant="outline-success">
+                    Search
+                  </Button>
+                </Col>
+              </Row>
+            </Form>
+          </div>
+          {this.state.result.length > 0 ? (
+            <React.Fragment>
+              <SearchContainer
+                results={this.state.result}
+                count={this.state.count}
+              />
+              <Redirect
+                to={{
+                  pathname: `/results?search_query=${searchedPhrase}`,
+                }}
+              />
+            </React.Fragment>
+          ) : null}
+        </Router>
       </React.Fragment>
     );
   }
