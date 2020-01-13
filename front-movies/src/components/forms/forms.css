@@ -1,0 +1,58 @@
+.form-box {
+  margin: 0 auto;
+  padding: 30px;
+  margin-bottom: 20px;
+}
+
+.new {
+  padding: 20px;
+}
+
+.new-message {
+  margin: 0;
+}
+
+.login {
+  max-width: 400px;
+  margin-top: 40px;
+}
+
+.register {
+  max-width: 800px;
+}
+
+.text-center {
+  text-align: center;
+}
+
+.border {
+  border: 1px solid #cdd6db;
+  border-radius: 5px;
+}
+
+.form-login-sign {
+  font-size: 24px;
+  font-weight: 300;
+  letter-spacing: -0.3px;
+}
+
+.form-sign-register {
+  font-size: 42px;
+}
+
+.register-join {
+  font-size: 14px;
+  letter-spacing: -0.3px;
+}
+
+.btn-login {
+  margin: 40px 0 0;
+}
+
+.form-message {
+  font-size: 13px;
+  margin-top: 2px;
+}
+.invalid {
+  color: rgb(202, 0, 0);
+}
