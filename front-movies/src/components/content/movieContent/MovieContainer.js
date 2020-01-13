@@ -1,4 +1,5 @@
 import React, { Component } from 'react';
+import Spinner from 'react-bootstrap/Spinner';
 import '../content.css';
 
 export default class MovieContainer extends Component {
@@ -11,7 +12,13 @@ export default class MovieContainer extends Component {
             Found {count} {count > 1 ? 'movies' : 'movie'}:
           </h5>
         </div>
-        <ResultContainer movies={movies} />
+        {movies.length > 0 ? (
+          <ResultContainer movies={movies} />
+        ) : (
+          <div className="cont movies">
+            <Spinner animation="border" variant="success" />
+          </div>
+        )}
       </React.Fragment>
     );
   }
