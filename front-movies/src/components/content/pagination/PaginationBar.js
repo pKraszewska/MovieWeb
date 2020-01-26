@@ -4,9 +4,6 @@ import Pagination from 'react-bootstrap/Pagination';
 export default class PaginationBar extends Component {
   constructor() {
     super();
-    this.state = {
-      page_number: 1,
-    };
 
     this.handleClick = this.handleClick.bind(this);
     this.passStateToParent = this.passStateToParent.bind(this);

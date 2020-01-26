@@ -15,7 +15,8 @@ export default class BrowseMovies extends Component {
       movies: [],
       count: 0,
       page_number: 1,
-      limit_per_page: 0,
+      loaded: false,
+      totalPages: 0,
     };
   }
 
@@ -31,12 +32,13 @@ export default class BrowseMovies extends Component {
         return success.json();
       })
       .then(res => {
-        console.log(res);
-        this.setState({ movies: res.data.movies });
-        this.setState({ count: res.data.movie_count });
-        this.setState({ page_number: res.data.page_number });
-        this.setState({ limit_per_page: res.data.limit });
-        console.log(this.state.limit_per_page);
+        this.setState({
+          loaded: true,
+          movies: res.data.movies,
+          count: res.data.movie_count,
+          page_number: res.data.page_number,
+          totalPages: Math.floor(res.data.movie_count / res.data.limit),
+        });
       })
       .catch(error => {
         console.log(error);
@@ -44,14 +46,11 @@ export default class BrowseMovies extends Component {
   }
 
   getSearchedMovies(data) {
-    console.log(data);
     this.setState({ movies: data.movies });
     this.setState({ count: data.count });
   }
 
   getPage(data) {
-    console.log(data);
-    this.setState({ page_number: data });
     this.getAllMovies(data);
   }
 
@@ -59,12 +58,16 @@ export default class BrowseMovies extends Component {
     return (
       <React.Fragment>
         <Searchbar sendData={this.getSearchedMovies} />
+        {this.state.loaded === true ? (
+          <PaginationBar
+            sendPage={this.getPage}
+            pageNum={this.state.page_number}
+            totalPages={this.state.totalPages}
+          />
+        ) : (
+          <React.Fragment />
+        )}
         <MovieContainer movies={this.state.movies} count={this.state.count} />
-        <PaginationBar
-          sendPage={this.getPage}
-          limit={this.state.limit_per_page}
-          count={this.state.count}
-        />
       </React.Fragment>
     );
   }
