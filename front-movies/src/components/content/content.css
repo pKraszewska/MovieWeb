@@ -1,13 +1,29 @@
-.search-box {
+.box {
   display: flex;
   justify-content: center;
-  max-width: 500px;
-  margin: 2% auto;
+  flex-wrap: wrap;
+}
+
+.search {
+  margin: 0 auto;
+  padding: 2%;
+  background-color: #2b3035;
+}
+
+.paginator {
+  margin: 0 auto;
+}
+
+.label {
+  color: rgba(255, 255, 255, 0.472);
 }
 
 .cont {
-  margin: 0 10% 0 10%;
+  display: flex;
+  justify-content: center;
+  margin: 0 21% 0 21%;
 }
+
 .movies {
   display: flex;
   justify-content: center;
@@ -15,7 +31,8 @@
 }
 
 .count {
-  margin-left: 10%;
+  color: #007bff;
+  padding: 1%;
 }
 
 .movie-inside {
