@@ -48,11 +48,13 @@ export default class Searchbar extends Component {
   render() {
     return (
       <React.Fragment>
-        <div className="search-box">
+        <div className="box search">
           <Form>
             <Row>
               <Col>
-                <Form.Label>What are you looking for?</Form.Label>
+                <Form.Label className="label">
+                  What are you looking for?
+                </Form.Label>
               </Col>
             </Row>
             <Row>
@@ -66,7 +68,7 @@ export default class Searchbar extends Component {
                 />
               </Col>
               <Col xs={2}>
-                <Button onClick={this.search} variant="outline-success">
+                <Button onClick={this.search} variant="primary">
                   Search
                 </Button>
               </Col>

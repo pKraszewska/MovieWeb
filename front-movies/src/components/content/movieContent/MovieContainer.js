@@ -4,19 +4,14 @@ import '../content.css';
 
 export default class MovieContainer extends Component {
   render() {
-    const { movies, count } = this.props;
+    const { movies } = this.props;
     return (
       <React.Fragment>
-        <div className="cont count">
-          <h5>
-            Found {count} {count > 1 ? 'movies' : 'movie'}:
-          </h5>
-        </div>
         {movies.length > 0 ? (
           <ResultContainer movies={movies} />
         ) : (
           <div className="cont movies">
-            <Spinner animation="border" variant="success" />
+            <Spinner animation="border" variant="primary" />
           </div>
         )}
       </React.Fragment>

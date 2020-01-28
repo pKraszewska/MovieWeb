@@ -57,6 +57,10 @@ export default class PaginationBar extends Component {
       </Pagination.Item>
     );
 
-    return <Pagination>{pageNumbers}</Pagination>;
+    return (
+      <div className="box paginator">
+        <Pagination>{pageNumbers}</Pagination>
+      </div>
+    );
   }
 }
