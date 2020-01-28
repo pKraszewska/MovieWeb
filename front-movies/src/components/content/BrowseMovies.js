@@ -15,7 +15,6 @@ export default class BrowseMovies extends Component {
       movies: [],
       count: 0,
       page_number: 1,
-      loaded: false,
       totalPages: 0,
     };
   }
@@ -25,7 +24,6 @@ export default class BrowseMovies extends Component {
   }
 
   getAllMovies(pageNum) {
-    this.setState({ loaded: false });
     fetch(
       `https://yts.lt/api/v2/list_movies.json?sort_by=year&&page=${pageNum}`
     )
@@ -34,7 +32,6 @@ export default class BrowseMovies extends Component {
       })
       .then(res => {
         this.setState({
-          loaded: true,
           movies: res.data.movies,
           count: res.data.movie_count,
           page_number: res.data.page_number,
@@ -59,15 +56,17 @@ export default class BrowseMovies extends Component {
     return (
       <React.Fragment>
         <Searchbar sendData={this.getSearchedMovies} />
-        {this.state.loaded === true ? (
-          <PaginationBar
-            sendPage={this.getPage}
-            pageNum={this.state.page_number}
-            totalPages={this.state.totalPages}
-          />
-        ) : (
-          <React.Fragment />
-        )}
+        <div className="cont count">
+          <h4>
+            Found {this.state.count} {this.state.count > 1 ? 'movies' : 'movie'}
+            :
+          </h4>
+        </div>
+        <PaginationBar
+          sendPage={this.getPage}
+          pageNum={this.state.page_number}
+          totalPages={this.state.totalPages}
+        />
         <MovieContainer movies={this.state.movies} count={this.state.count} />
       </React.Fragment>
     );
