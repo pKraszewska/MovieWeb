@@ -24,8 +24,9 @@ export default class BrowseMovies extends Component {
   }
 
   getAllMovies(pageNum) {
+    this.setState({ movies: [] });
     fetch(
-      `https://yts.lt/api/v2/list_movies.json?sort_by=year&&page=${pageNum}`
+      `https://yts.mx/api/v2/list_movies.json?sort_by=year&&page=${pageNum}`
     )
       .then(success => {
         return success.json();
