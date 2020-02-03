@@ -23,7 +23,7 @@ const ResultContainer = props => {
   const rows = props.movies.map((row, index) => {
     return (
       <div key={index} className="movie-inside">
-        <figure>
+        <figure style={{ marginBottom: '2px' }}>
           <img
             src={row.medium_cover_image}
             alt={row.title}
